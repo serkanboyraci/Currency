@@ -45,6 +45,7 @@ class ViewController: UIViewController {
         //2
                 if data != nil {
                     
+                    
                 }
                 
                 
@@ -55,6 +56,7 @@ class ViewController: UIViewController {
                 
             }
         }
+        task.resume() // to run smoothly to work task.
         
         
     }
