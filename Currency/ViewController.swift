@@ -28,6 +28,8 @@ class ViewController: UIViewController {
         // 2 response & Data
         // 3 parsing & JSON serialization
         
+        
+        // 1
         let url = URL(string: "https://raw.githubusercontent.com/atilsamancioglu/CurrencyData/main/currency.json")
         
         let session = URLSession.shared
@@ -39,6 +41,13 @@ class ViewController: UIViewController {
                 alert.addAction(okButton)
                 self.present(alert, animated: true)
             } else {
+                
+        //2
+                if data != nil {
+                    
+                }
+                
+                
                 
                 
                 
