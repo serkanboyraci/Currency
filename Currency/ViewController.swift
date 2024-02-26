@@ -15,6 +15,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var jpyLabel: UILabel!
     @IBOutlet weak var usdLabel: UILabel!
     @IBOutlet weak var tryLabel: UILabel!
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    
  
     
     override func viewDidLoad() {
@@ -45,10 +48,34 @@ class ViewController: UIViewController {
         //2
                 if data != nil {
                     do {
-                        let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+                        let jsonResponse = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! Dictionary<String, Any>
                         // ASYNC
                         DispatchQueue.main.async {
-                            print(jsonResponse)
+                            if let rates = jsonResponse["rates"] as? [String : Any] {
+                                //print(rates)
+                                if let cad = rates["CAD"] as? Double { //to take value we must cast as a Double or String
+                                    self.cadLabel.text = "CAD: \(cad)"
+                                }
+                                if let chf = rates["CHF"] as? Double { //to take value we must cast as a Double or String
+                                    self.chfLabel.text = "CHF: \(chf)"
+                                }
+                                if let gbp = rates["GBP"] as? Double { //to take value we must cast as a Double or String
+                                    self.gbpLabel.text = "GBP: \(gbp)"
+                                }
+                                if let jpy = rates["JPY"] as? Double { //to take value we must cast as a Double or String
+                                    self.jpyLabel.text = "JPY: \(jpy)"
+                                }
+                                if let usd = rates["USD"] as? Double { //to take value we must cast as a Double or String
+                                    self.usdLabel.text = "USD: \(usd)"
+                                }
+                                if let trl = rates["TRY"] as? Double { //to take value we must cast as a Double or String
+                                    self.tryLabel.text = "TRY: \(trl)"
+                                }
+                            }
+                            if let date = jsonResponse["date"] as? String {
+                                self.dateLabel.text = "Date: \(date)"
+                                
+                            }
                         }
                         
                     } catch {
